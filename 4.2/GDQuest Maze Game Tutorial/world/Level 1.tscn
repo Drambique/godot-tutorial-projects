@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpr0cv1gt4jph"]
+
+[ext_resource type="MeshLibrary" uid="uid://c2mky32rwgmau" path="res://world/Mesh Lib.meshlib" id="1_tk612"]
+[ext_resource type="Script" path="res://world/Level 1.gd" id="1_yfwnc"]
+[ext_resource type="PackedScene" uid="uid://ce11kdbfgkunv" path="res://world/Goal.tscn" id="2_sqsh7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6qxi"]
+albedo_color = Color(0.4, 0.12, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_p8mcy"]
+material = SubResource("StandardMaterial3D_m6qxi")
+size = Vector2(50, 50)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54j3i"]
+sky_top_color = Color(0.24, 0.4525, 0.75, 1)
+
+[sub_resource type="Sky" id="Sky_ku2cf"]
+sky_material = SubResource("ProceduralSkyMaterial_54j3i")
+
+[sub_resource type="Environment" id="Environment_gusno"]
+background_mode = 2
+sky = SubResource("Sky_ku2cf")
+tonemap_mode = 2
+adjustment_enabled = true
+adjustment_brightness = 1.4
+adjustment_contrast = 1.2
+
+[node name="Level 1" type="Node3D"]
+script = ExtResource("1_yfwnc")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_p8mcy")
+skeleton = NodePath("../..")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_tk612")
+cell_size = Vector3(4, 5, 4)
+data = {
+"cells": PackedInt32Array(65534, 0, 0, 65534, 65533, 0, 1, 65533, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 4, 65533, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 65532, 3, 0, 65531, 3, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 4, 6, 0, 3, 6, 0, 2, 6, 0, 1, 6, 0, 0, 6, 0, 0, 65533, 0, 65535, 65533, 0, 4, 65532, 0, 2, 0, 0, 3, 0, 0, 65534, 65532, 0, 65535, 6, 0, 65534, 6, 0, 65533, 6, 0, 65532, 6, 0, 65531, 6, 0, 65530, 6, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131070, 65533, 0, 131071, 65533, 0, 65537, 65533, 0, 196606, 65533, 0, 196607, 65533, 0, 131072, 65533, 0, 131073, 65533, 0, 196606, 65535, 0, 196606, 65534, 0, 196607, 65534, 0, 196607, 65535, 0, 131072, 65534, 0, 131072, 65535, 0, 131073, 65534, 0, 131073, 65535, 0, 65540, 65532, 0, 65540, 65533, 0, 131074, 65533, 0, 131075, 65533, 0, 131076, 65533, 0, 131076, 65532, 0, 131076, 65531, 0, 131075, 65531, 0, 131075, 65532, 0, 131074, 65532, 0, 131073, 65532, 0, 131073, 65531, 0, 131074, 65531, 0, 196606, 65531, 0, 196607, 65531, 0, 131072, 65531, 0, 131072, 65532, 0, 196607, 65532, 0, 196606, 65532, 0, 65536, 3, 0, 65540, 3, 0, 131076, 3, 0, 131072, 3, 0, 196612, 3, 0, 196611, 3, 0, 196610, 3, 0, 196609, 3, 0, 196608, 3, 0, 65529, 6, 0, 65529, 5, 0, 65529, 4, 0, 65529, 3, 0, 65529, 2, 0, 65529, 1, 0, 65529, 0, 0, 65529, 65535, 0, 65529, 65534, 0, 65529, 65533, 0, 65529, 65532, 0, 65529, 65531, 0, 65529, 65530, 0, 65529, 65529, 0, 65530, 65529, 0, 65531, 65529, 0, 65532, 65529, 0, 65533, 65529, 0, 65534, 65529, 0, 65535, 65529, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65529, 0, 4, 65529, 0, 5, 65529, 0, 6, 65529, 0, 6, 65530, 0, 6, 65531, 0, 6, 65532, 0, 6, 65533, 0, 6, 65534, 0, 6, 65535, 0, 6, 0, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 6, 5, 0, 6, 6, 0, 5, 6, 0, 65534, 65531, 0, 4, 65531, 0, 4, 65530, 0, 65534, 65530, 0, 65540, 65530, 0, 131076, 65530, 0, 131075, 65530, 0, 131074, 65530, 0, 131073, 65530, 0, 131072, 65530, 0, 196607, 65530, 0, 196606, 65530, 0, 196606, 65529, 0, 196607, 65529, 0, 131072, 65529, 0, 131073, 65529, 0, 131074, 65529, 0, 131075, 65529, 0, 131076, 65529, 0, 65537, 65529, 0, 65539, 65529, 0, 65540, 65529, 0, 131067, 65533, 0, 131067, 65534, 0, 131070, 65532, 0, 65536, 65533, 0, 131071, 65529, 1441792, 131070, 65529, 1441792, 131070, 65530, 1441792, 65536, 65529, 0, 65538, 65529, 0, 0, 65531, 1441792)
+}
+metadata/_editor_floor_ = Vector3(0, 5, 0)
+
+[node name="Goal" parent="." instance=ExtResource("2_sqsh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.89, 1, -2.786)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gusno")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.934242, 0.257964, -0.246266, 0, 0.690516, 0.723317, 0.35664, -0.675753, 0.645109, 0, 27.3667, 0)
+shadow_enabled = true
+
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

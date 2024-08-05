@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b20vw4yn2to2a"]
+
+[ext_resource type="PackedScene" uid="uid://ce832gn1666le" path="res://player/Player.tscn" id="1_jhva3"]
+[ext_resource type="Script" path="res://Game.gd" id="1_pbbbf"]
+[ext_resource type="PackedScene" uid="uid://bpr0cv1gt4jph" path="res://world/Level 1.tscn" id="2_m0t5m"]
+[ext_resource type="PackedScene" uid="uid://bs1wd76g4hwym" path="res://interface/Final Menu.tscn" id="3_30lhb"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_pbbbf")
+
+[node name="Player" parent="." instance=ExtResource("1_jhva3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6516, 1, 20.2718)
+
+[node name="Level 1" parent="." instance=ExtResource("2_m0t5m")]
+
+[node name="Final Menu" parent="." instance=ExtResource("3_30lhb")]
+visible = false
+
+[connection signal="level_completed" from="Level 1" to="." method="_on_level_1_level_completed"]
+[connection signal="retried" from="Final Menu" to="." method="_on_final_menu_retried"]

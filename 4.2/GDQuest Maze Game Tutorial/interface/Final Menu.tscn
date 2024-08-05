@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs1wd76g4hwym"]
+
+[ext_resource type="Script" path="res://interface/Final Menu.gd" id="1_clgb4"]
+[ext_resource type="FontFile" uid="uid://dmep3s1uv5roh" path="res://interface/fonts/Montserrat-ExtraBold.ttf" id="1_dgrf1"]
+[ext_resource type="Theme" uid="uid://51cjrsrwh410" path="res://interface/fonts/Montserrat ExtraBold 32px.tres" id="2_mawn1"]
+
+[sub_resource type="Theme" id="Theme_6q133"]
+default_font = ExtResource("1_dgrf1")
+default_font_size = 48
+
+[node name="Final Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clgb4")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_6q133")
+text = "Success"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mawn1")
+text = "Your time was: 1m 25s"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Try Again" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mawn1")
+text = "Try Again"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mawn1")
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
